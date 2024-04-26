@@ -364,4 +364,5 @@ def main():
     except Exception as e:
         print("An error occurred:", e)
 
-main()
+if __name__ == '__main__':
+ main()
