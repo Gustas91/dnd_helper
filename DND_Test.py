@@ -1,5 +1,4 @@
 import unittest
-from unittest.mock import patch
 import os
 from DNDHelper import CharacterManager, PlayerCharacter, NPCCharacter
 
@@ -9,9 +8,10 @@ class TestCharacterManager(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        for file_name in os.listdir('.'):
-            if file_name.endswith('_character_sheet.txt'):
-                os.remove(file_name)    
+     current_directory = os.path.dirname(os.path.abspath(__file__))
+     for file_name in os.listdir(current_directory):
+        if file_name.endswith('_character_sheet.txt'):
+         os.remove(os.path.join(current_directory, file_name))    
 
     def test_add_character(self):
         character = PlayerCharacter()
