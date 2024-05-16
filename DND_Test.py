@@ -20,9 +20,12 @@ class TestCharacterManager(unittest.TestCase):
 
     def test_add_and_export_character(self):
         self.manager.add_character(NPCCharacter())
-        self.manager.export_character(self.manager.get_characters()[0])
-        exported_file_name = "None_character_sheet.txt"
-        self.assertTrue(os.path.exists(exported_file_name))
+        character = self.manager.get_characters()[0]
+        self.manager.export_character(character)
+        current_directory = os.path.dirname(os.path.abspath(__file__))
+        exported_file_name = f"{character.attributes['Name']}_character_sheet.txt"
+        exported_file_path = os.path.join(current_directory, exported_file_name)
+        self.assertTrue(os.path.exists(exported_file_path))
 
     def test_import_character(self):
         filename = "None_character_sheet.txt" 
